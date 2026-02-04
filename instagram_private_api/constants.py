@@ -5,19 +5,19 @@ class Constants(object):
     IG_SIG_KEY = '19ce5f445dbfd9d29c59dc2a78c616a7fc090a8e018b9267bc4240a30244c53b'
     IG_CAPABILITIES = '3brTvw=='
     SIG_KEY_VERSION = '4'
-    APP_VERSION = '76.0.0.15.395'
+    APP_VERSION = '314.0.0.33.105'
     APPLICATION_ID = '567067343352427'
     FB_HTTP_ENGINE = 'Liger'
 
-    ANDROID_VERSION = 24
-    ANDROID_RELEASE = '7.0'
+    ANDROID_VERSION = 31
+    ANDROID_RELEASE = '12.0'
     PHONE_MANUFACTURER = 'samsung'
-    PHONE_DEVICE = 'SM-G930F'
-    PHONE_MODEL = 'herolte'
-    PHONE_DPI = '640dpi'
-    PHONE_RESOLUTION = '1440x2560'
-    PHONE_CHIPSET = 'samsungexynos8890'
-    VERSION_CODE = '138226743'
+    PHONE_DEVICE = 'SM-G998B'
+    PHONE_MODEL = 'herolte' #aurora
+    PHONE_DPI = '480dpi'
+    PHONE_RESOLUTION = '1080x2274'
+    PHONE_CHIPSET = 'exynos2100'
+    VERSION_CODE = '550854424'
 
     USER_AGENT_FORMAT = \
         'Instagram {app_version} Android ({android_version:d}/{android_release}; ' \
