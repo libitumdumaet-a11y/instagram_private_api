@@ -31,9 +31,18 @@ class AccountsEndpointsMixin(object):
             return_response=True)
 
         if not self.csrftoken:
-            raise ClientError(
-                'Unable to get csrf from prelogin.',
-                error_response=self._read_response(prelogin_params))
+            # Вместо прямой установки атрибута, мы вручную добавляем фейковую куку в банку
+            from urllib.request import HTTPCookieProcessor
+            import http.cookiejar
+            
+            fake_cookie = http.cookiejar.Cookie(
+                version=0, name='csrftoken', value='missing',
+                port=None, port_specified=False,
+                domain='.instagram.com', domain_specified=True, domain_initial_dot=True,
+                path='/', path_specified=True,
+                secure=True, expires=None, discard=True, comment=None, comment_url=None, rest={'HttpOnly': None}, rfc2109=False
+            )
+            self.cookie_jar.set_cookie(fake_cookie)
 
         login_params = {
             'device_id': self.device_id,
