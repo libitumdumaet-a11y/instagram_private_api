@@ -204,8 +204,9 @@ class Client(AccountsEndpointsMixin, DiscoverEndpointsMixin, FeedEndpointsMixin,
 
         if not cookie_string:   # [TODO] There's probably a better way than to depend on cookie_string
             if not self.username or not self.password:
-                raise ClientLoginRequiredError('login_required', code=400)
-            self.login()
+                #raise ClientLoginRequiredError('login_required', code=400)
+                pass
+            #self.login()
 
         self.logger.debug('USERAGENT: {0!s}'.format(self.user_agent))
         super(Client, self).__init__()
@@ -392,18 +393,13 @@ class Client(AccountsEndpointsMixin, DiscoverEndpointsMixin, FeedEndpointsMixin,
     def default_headers(self):
         return {
             'User-Agent': self.user_agent,
-            'Connection': 'close',
+            'Connection': 'keep-alive',
             'Accept': '*/*',
             'Accept-Language': 'en-US',
-            'Accept-Encoding': 'gzip, deflate',
             'X-IG-Capabilities': self.ig_capabilities,
-            'X-IG-Connection-Type': 'WIFI',
-            'X-IG-Connection-Speed': '{0:d}kbps'.format(random.randint(1000, 5000)),
             'X-IG-App-ID': self.application_id,
-            'X-IG-Bandwidth-Speed-KBPS': '-1.000',
-            'X-IG-Bandwidth-TotalBytes-B': '0',
-            'X-IG-Bandwidth-TotalTime-MS': '0',
-            'X-FB-HTTP-Engine': Constants.FB_HTTP_ENGINE,
+            'X-FB-HTTP-Engine': 'Liger',
+            'Host': 'i.instagram.com'
         }
 
     @property
